@@ -1,0 +1,5 @@
+(library
+ (name aea)
+ (public_name aea)
+ (libraries aeroon lp-highs containers unix))
+

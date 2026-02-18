@@ -1,0 +1,4 @@
+(executable
+ (name matcher_main)
+ (public_name aea_matcher)
+ (libraries aea))

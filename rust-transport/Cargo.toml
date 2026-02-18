@@ -1,0 +1,11 @@
+[package]
+name = "aea-transport"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Using Unix domain sockets for now (simpler than full Aeron integration)
+# Can be replaced with aeron-rs when available
+libc = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

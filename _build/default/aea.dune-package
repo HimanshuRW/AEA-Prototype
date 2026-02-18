@@ -1,0 +1,117 @@
+(lang dune 3.21)
+(name aea)
+(version 0.1)
+(sections (lib .) (libexec .) (bin ../../bin) (doc ../../doc/aea))
+(files
+ (lib
+  (META
+   aea.a
+   aea.cma
+   aea.cmi
+   aea.cmt
+   aea.cmx
+   aea.cmxa
+   aea.ml
+   aea__Aeron_wiring.cmi
+   aea__Aeron_wiring.cmt
+   aea__Aeron_wiring.cmti
+   aea__Aeron_wiring.cmx
+   aea__Batch_auction.cmi
+   aea__Batch_auction.cmt
+   aea__Batch_auction.cmti
+   aea__Batch_auction.cmx
+   aea__Bidder_logic.cmi
+   aea__Bidder_logic.cmt
+   aea__Bidder_logic.cmti
+   aea__Bidder_logic.cmx
+   aea__Fix_parser.cmi
+   aea__Fix_parser.cmt
+   aea__Fix_parser.cmti
+   aea__Fix_parser.cmx
+   aea__Market_state.cmi
+   aea__Market_state.cmt
+   aea__Market_state.cmti
+   aea__Market_state.cmx
+   aea__Matcher.cmi
+   aea__Matcher.cmt
+   aea__Matcher.cmti
+   aea__Matcher.cmx
+   aeron_wiring.ml
+   aeron_wiring.mli
+   batch_auction.ml
+   batch_auction.mli
+   bidder_logic.ml
+   bidder_logic.mli
+   dune-package
+   fix_parser.ml
+   fix_parser.mli
+   market_state.ml
+   market_state.mli
+   matcher.ml
+   matcher.mli
+   opam))
+ (libexec (aea.cmxs))
+ (bin (aea_matcher))
+ (doc (README.md)))
+(library
+ (name aea)
+ (kind normal)
+ (archives (byte aea.cma) (native aea.cmxa))
+ (plugins (byte aea.cma) (native aea.cmxs))
+ (native_archives aea.a)
+ (requires aeroon lp-highs containers unix)
+ (main_module_name Aea)
+ (modes byte native)
+ (modules
+  (wrapped
+   (group
+    (alias
+     (obj_name aea)
+     (visibility public)
+     (kind alias)
+     (source (path Aea) (impl (path aea.ml-gen))))
+    (name Aea)
+    (modules
+     (module
+      (obj_name aea__Aeron_wiring)
+      (visibility public)
+      (source
+       (path Aeron_wiring)
+       (intf (path aeron_wiring.mli))
+       (impl (path aeron_wiring.ml))))
+     (module
+      (obj_name aea__Batch_auction)
+      (visibility public)
+      (source
+       (path Batch_auction)
+       (intf (path batch_auction.mli))
+       (impl (path batch_auction.ml))))
+     (module
+      (obj_name aea__Bidder_logic)
+      (visibility public)
+      (source
+       (path Bidder_logic)
+       (intf (path bidder_logic.mli))
+       (impl (path bidder_logic.ml))))
+     (module
+      (obj_name aea__Fix_parser)
+      (visibility public)
+      (source
+       (path Fix_parser)
+       (intf (path fix_parser.mli))
+       (impl (path fix_parser.ml))))
+     (module
+      (obj_name aea__Market_state)
+      (visibility public)
+      (source
+       (path Market_state)
+       (intf (path market_state.mli))
+       (impl (path market_state.ml))))
+     (module
+      (obj_name aea__Matcher)
+      (visibility public)
+      (source
+       (path Matcher)
+       (intf (path matcher.mli))
+       (impl (path matcher.ml))))))
+   (wrapped true))))

@@ -1,0 +1,7 @@
+version = "0.1"
+description = ""
+requires = "aeroon containers lp-highs unix"
+archive(byte) = "aea.cma"
+archive(native) = "aea.cmxa"
+plugin(byte) = "aea.cma"
+plugin(native) = "aea.cmxs"
